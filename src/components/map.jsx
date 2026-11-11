@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "re
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { createPinIcon, createDefaultPinIcon, createColoredPinIcon } from "../utils/pinCategories";
+import { OSM_TILE_ATTRIBUTION, OSM_TILE_URL } from "../utils/mapTiles";
 
 const defaultPin = createDefaultPinIcon();
 
@@ -127,15 +128,7 @@ function Map({
           width: "100%",
         }}
       >
-        {
-          // OLD Maptiler api key. Leave here incase we want to switch to it. (There's a monthly quota)
-        /* <TileLayer attribution='&copy; <a href="https://www.maptiler.com/">MapTiler</a>' url="https://api.maptiler.com/maps/pastel/{z}/{x}/{y}.png?key=lxScjRx8ItyJXrWd3tbU" />
-         */}
-
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          attribution="&copy; OpenStreetMap contributors &copy; CARTO"
-        />
+        <TileLayer url={OSM_TILE_URL} attribution={OSM_TILE_ATTRIBUTION} />
         <ClickHandler onClickOnMap={onClickOnMap} />
         <MapController mapAction={mapAction} sidebarOpen={sidebarOpen} />
 
